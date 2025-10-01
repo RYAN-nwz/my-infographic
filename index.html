@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8월 VOC 월간 리포트 인포그래픽</title>
+    <title>9월 VOC 월간 리포트 인포그래픽</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -83,28 +84,11 @@
             width: 2px;
             background-color: #A3B3C2;
         }
-        .issue-card {
-            background-color: white;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            border-left: 4px solid #FF6B6B;
-        }
-        .issue-card.critical {
-            border-left-color: #FF6B6B;
-        }
-        .issue-card.major {
-            border-left-color: #FFD166;
-        }
-        .issue-card.minor {
-            border-left-color: #06D6A0;
-        }
     </style>
 </head>
 <body>
     <div class="flex">
-        <!-- 왼쪽 사이드바 - 월차별 목록 -->
-        <div class="w-64 bg-gray-100 min-h-screen p-6 border-r border-gray-200">
+        <div class="w-64 bg-gray-100 min-h-screen p-6 border-r border-gray-200 fixed top-0 left-0 h-full">
             <h2 class="text-xl font-bold text-[#073B4C] mb-6">월차별 리포트</h2>
             <nav class="space-y-3">
                 <a href="./7월 VOC 월간 리포트.html" 
@@ -113,570 +97,420 @@
                     <div class="text-sm text-gray-500">2025년 7월</div>
                 </a>
                 <a href="./8월 VOC 월간 리포트.html" 
-                   class="block p-3 rounded-lg bg-[#118AB2] text-white">
+                   class="block p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
                     <div class="font-medium">8월 VOC</div>
-                    <div class="text-sm text-gray-200">2025년 8월</div>
+                    <div class="text-sm text-gray-500">2025년 8월</div>
                 </a>
-                <div class="block p-3 rounded-lg text-gray-400 cursor-not-allowed">
+                <a href="./9월 VOC 월간 리포트.html" 
+                   class="block p-3 rounded-lg bg-[#118AB2] text-white shadow-lg">
                     <div class="font-medium">9월 VOC</div>
-                    <div class="text-sm text-gray-300">2025년 9월 (예정)</div>
-                </div>
+                    <div class="text-sm text-gray-200">2025년 9월</div>
+                </a>
             </nav>
         </div>
 
-        <!-- 메인 컨텐츠 -->
-        <div class="flex-1">
+        <div class="flex-1 ml-64">
             <div class="container mx-auto p-4 md:p-8 max-w-6xl">
-                <!-- 헤더 -->
                 <header class="text-center mb-12">
-                    <h1 class="text-4xl md:text-5xl font-black text-[#073B4C] mb-2">2025년 8월 VOC 리포트</h1>
+                    <h1 class="text-4xl md:text-5xl font-black text-[#073B4C] mb-2">2025년 9월 VOC 리포트</h1>
                     <p class="text-lg text-[#118AB2]">고객의 목소리를 통해 더 나은 게임 환경을 만들어갑니다.</p>
-                    <p class="text-sm text-gray-600 mt-2">2025년 8월 1일 ~ 8월 31일</p>
+                    <p class="text-sm text-gray-600 mt-2">2025년 9월 1일 ~ 9월 30일</p>
                 </header>
-
-        <!-- 요약 KPI -->
-        <section id="summary" class="mb-16">
-            <h2 class="section-title">8월 VOC 현황 요약</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="kpi-card">
-                    <div class="kpi-value">189<span class="text-2xl">건</span></div>
-                    <div class="kpi-label">8월 총 VOC(건의) 접수</div>
-                    <div class="text-sm text-green-600 mt-2">7월 대비 +6.8%</div>
-                </div>
-                <div class="kpi-card col-span-1 md:col-span-2" style="border-color: #FF6B6B;">
-                     <h3 class="text-xl font-bold text-[#073B4C] mb-3">Top 3 주요 문의 카테고리</h3>
-                    <div class="flex justify-around items-center h-full">
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-[#FF6B6B]">1.</p>
-                            <p class="text-lg font-medium text-[#073B4C]">업데이트 후 오류</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-[#FF6B6B]">2.</p>
-                            <p class="text-lg font-medium text-[#073B4C]">보상 미지급</p>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-2xl font-bold text-[#FF6B6B]">3.</p>
-                            <p class="text-lg font-medium text-[#073B4C]">게임 플레이 환경</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 게임별 VOC 분포 -->
-        <section id="distribution" class="mb-16">
-            <h2 class="section-title">게임별 VOC(건의) 분포</h2>
-            <p class="text-md text-gray-600 mb-6 text-center">8월 한 달간 접수된 건의성 VOC를 게임별로 분석한 결과, 뉴맞고에서 가장 많은 건의가 발생했으며 업데이트 후 오류가 주요 이슈였습니다.</p>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <div class="chart-container">
-                    <canvas id="vocByGameChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <!-- 게임별 심층 분석 -->
-        <section id="deep-dive" class="mb-16">
-            <h2 class="section-title">게임별 심층 분석</h2>
-            <div class="space-y-8">
                 
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-                    <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">🎴</span>뉴맞고
-                    </h3>
-                    <div class="flex-grow">
-                        <p class="font-semibold text-gray-800 mb-2">'부활하기' 기능 UI/UX 불만 지속 증가</p>
-                        <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
-                            "부활하기 버튼위치를 바꿔주던지 해야지 계속 실수로 눌러서 구슬 차감되네요"
-                        </blockquote>
+                <section class="mb-16">
+                    <h2 class="section-title">9월 VOC 현황 요약</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="kpi-card">
+                            <div class="kpi-value">215<span class="text-2xl">건</span></div>
+                            <div class="kpi-label">9월 총 VOC(건의) 접수</div>
+                            <div class="text-sm text-red-600 mt-2">8월 대비 +13.8%</div>
+                        </div>
+                        <div class="kpi-card col-span-1 md:col-span-2" style="border-color: #FF6B6B;">
+                           <h3 class="text-xl font-bold text-[#073B4C] mb-3">Top 3 주요 문의 카테고리</h3>
+                           <div class="flex justify-around items-center h-full">
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-[#FF6B6B]">1.</p>
+                                    <p class="text-lg font-medium text-[#073B4C]">게임 조작/공정성</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-[#FF6B6B]">2.</p>
+                                    <p class="text-lg font-medium text-[#073B4C]">결제/재화 오류</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-[#FF6B6B]">3.</p>
+                                    <p class="text-lg font-medium text-[#073B4C]">계정/로그인 문제</p>
+                                </div>
+                           </div>
+                        </div>
                     </div>
-                     <div class="mt-auto pt-4 border-t border-gray-200">
-                        <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
-                        <p class="text-sm text-gray-600">부활하기 기능 관련 CS가 7월 14건에서 8월 45건으로 3배 이상 증가하며 유저 불만이 가중되고 있음이 확인됨. 해당 데이터를 공유하여 UI/UX 개선 필요성에 대한 공감대 형성 및 대응 검토 요청</p>
+                </section>
+
+                <section class="mb-16">
+                    <h2 class="section-title">게임별 VOC(건의) 분포</h2>
+                    <p class="text-md text-gray-600 mb-6 text-center">9월 한 달간 접수된 건의성 VOC를 게임별로 분석한 결과, 뉴맞고에서 가장 많은 건의가 발생했으며 게임 조작 관련 불만이 주요 이슈였습니다.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="chart-container">
+                            <canvas id="vocByGameChart"></canvas>
+                        </div>
                     </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-                    <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">🎴</span>섯다
-                    </h3>
-                     <div class="flex-grow">
-                        <p class="font-semibold text-gray-800 mb-2">재화 분리 정책에 대한 혼란</p>
-                        <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
-                            "섯다 머니가 포커 에서 섯다로 옮겨간 다음 포커 머니가 자동 복사 된 다고 하셨는데 자동 복사 기능이 어디에 있죠~? ...돈이 다른데 왜 돈이 다르죠~?"
-                        </blockquote>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-gray-200">
-                        <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
-                        <p class="text-sm text-gray-600"> FAQ나 상세 가이드를 통해 유저들이 혼동할 수 있는 부분을 명확하게 추가 안내하고, 업데이트 후 문의에 대한 집중 대응 진행 </p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-                    <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">♣️</span>포커
-                    </h3>
-                    <div class="flex-grow">
-                        <p class="font-semibold text-gray-800 mb-2">정기결제(클래스) 해지 문의 증가</p>
-                        <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
-                            "정기결제 해지 방법을 찾기 어렵다는 불만과 환불 요청이 지속적으로 발생하고 있습니다."
-                        </blockquote>
-                    </div>
-                    <div class="mt-auto pt-4 border-t border-gray-200">
-                         <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
-                         <p class="text-sm text-gray-600">정기결제 해지 방법에 대한 명확한 안내와 함께, 해지 프로세스 자체를 단순화하여 사용자 편의성을 증대시킬 필요가 있습니다.</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-                    <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">🎰</span>뉴베가스
-                    </h3>
-                     <div class="flex-grow">
-                        <p class="font-semibold text-gray-800 mb-2">불법 광고 필터링 강화 요청</p>
-                        <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
-                            "그래도 피망 대기업 아님? 광고가 불법광고가 나오내요 온라인 카지노 강원랜드라뇨..."
-                        </blockquote>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-gray-200">
-                        <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
-                        <p class="text-sm text-gray-600">TNK 에디스콥 운영팀과 직접 미팅을 통해 공감대 형성. 1차적으로는 모니터링 강화를 통해 적극적인 리스크 관리를 요청하고, 필요 시 기술 지원을 통한 자동 필터링 시스템을 구축하여 리스크를 원천적으로 관리하는 방안을 추진 검토</p>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
-                    <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">♠️</span>쇼다운 홀덤
-                    </h3>
-                     <div class="flex-grow">
-                        <p class="font-semibold text-gray-800 mb-2">티켓 사용처 및 스케줄 개선 요청</p>
-                        <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
-                            "10만짜리 쿠폰은 출석 보상으로 왜 주는 거에요?ㅋㅋㅋ 새벽 4시 6시에만 10만 토너 열면서ㅋㅋㅋㅋㅋ"
-                        </blockquote>
-                    </div>
-                     <div class="mt-auto pt-4 border-t border-gray-200">
-                        <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
-                        <p class="text-sm text-gray-600">보상으로 지급된 티켓이 실질적인 가치를 제공하지 못해 '무의미한 보상'으로 인식되는 문제 확인. 보상 운영 개선 검토 요청</p>
-                    </div>
-                </div>
-            </div>
-            <p class="text-center text-gray-600 mt-8">자세한 내용은 아래 주요건의 VOC 요약을 통해 확인 부탁드립니다.</p>
-        </section>
-
-
-
-        <!-- 주요 건의 VOC 요약 -->
-        <section id="voc-summary" class="mb-16">
-            <h2 class="section-title">주요 건의 VOC 요약</h2>
-            <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-600">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 w-[15%]">게임</th>
-                            <th scope="col" class="px-6 py-3 w-[45%]">주요 VOC 내용</th>
-                            <th scope="col" class="px-6 py-3 w-[40%]">개선 인사이트</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b align-top">
-                            <td class="px-6 py-4 font-medium whitespace-nowrap" rowspan="3">뉴맞고</td>
-                            <td class="px-6 py-4">'부활하기' 기능 UI/UX 불만</td>
-                            <td class="px-6 py-4">부활하기 기능 관련 CS가 7월 14건에서 8월 45건으로 3배 이상 증가하며 유저 불만이 가중되고 있음이 확인됨. 해당 데이터를 공유하여 UI/UX 개선 필요성에 대한 공감대 형성 및 대응 검토 요청</td>
-                        </tr>
-                        <tr class="bg-white border-b align-top">
-                            <td class="px-6 py-4">친구 삭제 기능 추가 요청</td>
-                            <td class="px-6 py-4">친구 삭제 기능에 대한 VOC가 지속적으로 발생하고 있어, '차단' 기능만으로는 유저 니즈 충족이 어렵다는 점이 확인됨. 해당 내용을 기획팀에 전달하여 차후 편의성 개선 시 활용할 수 있도록 VOC 공유</td>
-                        </tr>
-                        <tr class="bg-white border-b align-top">
-                            <td class="px-6 py-4">클로버 최대 보유 한도 상향 요청</td>
-                            <td class="px-6 py-4">신규 콘텐츠의 핵심 재화인 클로버의 최대 보유 한도가 헤비 유저의 플레이를 저해하는 병목 현상으로 작용하고 있음. 관련 데이터 분석을 통해 현황을 공유하고, 콘텐츠 활성화를 위한 밸런스 조정 검토 필요</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b align-top">
-                            <td class="px-6 py-4 font-medium whitespace-nowrap" rowspan="2">섯다</td>
-                            <td class="px-6 py-4">재화 분리 정책에 대한 혼란</td>
-                            <td class="px-6 py-4">주요 정책 변경 시, FAQ나 상세 가이드를 통해 유저들이 혼동할 수 있는 부분을 명확하게 사전 안내하고, 업데이트 후 집중 문의에 대한 대응 가이드 마련</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b align-top">
-                            <td class="px-6 py-4">리뉴얼 이벤트 보상(별명 변경권) 미지급</td>
-                            <td class="px-6 py-4">고객 케어 차원에서 CS 인입 시, 유저에게 감사의 의미로 보상을 지급하는 '수동 지급' 진행하여 긍정적인 고객 경험을 제공</td>
-                        </tr>
-                        <tr class="bg-white border-b align-top">
-                            <td class="px-6 py-4 font-medium whitespace-nowrap">쇼다운 홀덤</td>
-                            <td class="px-6 py-4">티켓 사용처 및 스케줄 개선</td>
-                            <td class="px-6 py-4">보상으로 지급된 티켓이 실질적인 가치를 제공하지 못해 '무의미한 보상'으로 인식되는 문제 확인. 보상 운영 개선 검토 요청</td>
-                        </tr>
-                        <tr class="bg-gray-50 border-b align-top">
-                            <td class="px-6 py-4 font-medium whitespace-nowrap">뉴베가스</td>
-                            <td class="px-6 py-4">불법 광고 필터링 강화</td>
-                            <td class="px-6 py-4">TNK 에디스콥 운영팀과 직접 미팅을 통해 공감대 형성. 1차적으로는 모니터링 강화를 통해 적극적인 리스크 관리를 요청하고, 필요 시 기술 지원을 통한 자동 필터링 시스템을 구축하여 리스크를 원천적으로 관리하는 방안을 추진 검토</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 주요 이슈 및 대응 현황 -->
-        <section id="major-issues" class="mb-16">
-            <h2 class="section-title">주요 이슈 및 대응 현황</h2>
-            <p class="text-md text-gray-600 mb-8 text-center">8월 중 발생한 주요 이슈와 이에 대한 대응 현황을 게임별로 정리한 표입니다.</p>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm">
-                        <thead class="bg-gradient-to-r from-[#073B4C] to-[#118AB2] text-white">
-                            <tr>
-                                <th class="px-6 py-4 text-left font-bold w-[15%]">게임</th>
-                                <th class="px-6 py-4 text-left font-bold w-[35%]">주요 이슈</th>
-                                <th class="px-6 py-4 text-left font-bold w-[35%]">대응 현황</th>
-                                <th class="px-6 py-4 text-left font-bold w-[15%]">상태</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- 뉴맞고 -->
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="px-6 py-4 font-bold text-[#073B4C] text-center" rowspan="4">
-                                    <div class="flex flex-col items-center">
-                                        <span class="text-2xl mb-1">🎴</span>
-                                        <span>뉴맞고</span>
-                                        <span class="text-xs text-gray-500">(89건)</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">이벤트 보상 미지급</div>
-                                    <div class="text-xs text-gray-600 mt-1">'더위사냥', '연승 챌린지' 등 종료된 이벤트</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">이벤트 종료 안내 및 보상 지급 완료</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결완료</span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">8/26 업데이트 후 기능 오류</div>
-                                    <div class="text-xs text-gray-600 mt-1">'패밀리 도와주기' 기능 비활성화</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">8/26 당일 수정 배포 완료</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결완료</span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">인게임 충전 오류</div>
-                                    <div class="text-xs text-gray-600 mt-1">5900원 결제 후 화투머니 미지급</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">8/27 임시점검으로 수정 및 대응 완료</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결완료</span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">'부활하기' 기능 UI/UX 불만</div>
-                                    <div class="text-xs text-gray-600 mt-1">7월 14건 → 8월 45건으로 증가</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">UI/UX 개선 필요성 공감대 형성 및 대응 검토 요청</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">검토중</span>
-                                </td>
-                            </tr>
-
-                            <!-- 섯다 -->
-                            <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
-                                <td class="px-6 py-4 font-bold text-[#073B4C] text-center" rowspan="2">
-                                    <div class="flex flex-col items-center">
-                                        <span class="text-2xl mb-1">🎴</span>
-                                        <span>섯다</span>
-                                        <span class="text-xs text-gray-500">(32건)</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">접속 불가 오류</div>
-                                    <div class="text-xs text-gray-600 mt-1">CS001, AWT011 오류 코드 발생</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">8/26 당일 접속 오류 수정 완료, PC CS 접수 유저 대상 보상 지급</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결완료</span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">리뉴얼 이벤트 보상 미지급</div>
-                                    <div class="text-xs text-gray-600 mt-1">별명 변경권 등 사전예약 보상</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">고객 케어 차원에서 수동 지급 진행</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">진행중</span>
-                                </td>
-                            </tr>
-
-
-
-                            <!-- 뉴베가스 -->
-                            <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
-                                <td class="px-6 py-4 font-bold text-[#073B4C] text-center" rowspan="2">
-                                    <div class="flex flex-col items-center">
-                                        <span class="text-2xl mb-1">🎰</span>
-                                        <span>뉴베가스</span>
-                                        <span class="text-xs text-gray-500">(25건)</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">PC 실행 오류</div>
-                                    <div class="text-xs text-gray-600 mt-1">응용프로그램을 제대로 실행하지 못함 (0xc0000005)</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">Windows 7/8 운영체제 지원 종료에 따른 현상. OS 업데이트 안내 및 일부 유저 대상 개별 안내(OB) 진행 중</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">진행중</span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50 bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">불법 광고 제보</div>
-                                    <div class="text-xs text-gray-600 mt-1">게임 내 광고 시청 시 불법 사행성 사이트 노출</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">TNK 에디스콥과 직접 미팅, 모니터링 강화 및 자동 필터링 시스템 구축 검토</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">검토중</span>
-                                </td>
-                            </tr>
-
-                            <!-- 쇼다운 홀덤 -->
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="px-6 py-4 font-bold text-[#073B4C] text-center" rowspan="3">
-                                    <div class="flex flex-col items-center">
-                                        <span class="text-2xl mb-1">♠️</span>
-                                        <span>쇼다운 홀덤</span>
-                                        <span class="text-xs text-gray-500">(15건)</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">토너먼트 운영 불만</div>
-                                    <div class="text-xs text-gray-600 mt-1">8/25 긴급 점검으로 인한 토너먼트 강제 종료</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">8/25 당일 보상 대상자 선별 완료, 보상 지급 및 안내 쪽지 발송</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결완료</span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">티켓 시스템 불만</div>
-                                    <div class="text-xs text-gray-600 mt-1">10만짜리 쿠폰 출석 보상, 새벽 시간대 토너먼트</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">보상 운영 개선 검토 및 토너먼트 스케줄 최적화</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">검토중</span>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="px-6 py-4">
-                                    <div class="font-semibold text-gray-800">업데이트 후 성능 저하</div>
-                                    <div class="text-xs text-gray-600 mt-1">게임 내 버벅임, 기기 발열 증가</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-gray-700">1차 성능 개선 완료, 테이블 전환 시 채널 자동 열림 방지</div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">진행중</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- 상태별 요약 -->
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                    <div class="flex items-center justify-between">
-                        <h4 class="font-semibold text-green-800">해결완료</h4>
-                        <span class="text-2xl font-bold text-green-600">5건</span>
-                    </div>
-                    <p class="text-sm text-green-600 mt-2">즉시 대응이 가능했던 이슈들</p>
-                </div>
-                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                    <div class="flex items-center justify-between">
-                        <h4 class="font-semibold text-yellow-800">검토중</h4>
-                        <span class="text-2xl font-bold text-yellow-600">3건</span>
-                    </div>
-                    <p class="text-sm text-yellow-600 mt-2">장기적 개선이 필요한 이슈들</p>
-                </div>
-                <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <div class="flex items-center justify-between">
-                        <h4 class="font-semibold text-blue-800">진행중</h4>
-                        <span class="text-2xl font-bold text-blue-600">3건</span>
-                    </div>
-                    <p class="text-sm text-blue-600 mt-2">현재 개선 작업 진행 중</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 주요 대응 현황 -->
-        <section id="updates" class="mb-16">
-            <h2 class="section-title">8월 주차별 주요 대응 현황</h2>
-            <p class="text-md text-gray-600 mb-8 text-center">8월 중 진행된 주요 업데이트 및 이슈 해결 사항입니다. 신속한 대응으로 안정적인 서비스를 제공하기 위해 노력하고 있습니다.</p>
-            <div class="relative">
-                <div class="timeline-line"></div>
-                <div class="space-y-8">
-                    <div class="timeline-item">
-                        <div class="timeline-dot" style="background-color: #06D6A0; box-shadow: 0 0 0 3px #06D6A0;"></div>
-                        <div class="bg-white p-5 rounded-lg shadow-md">
-                            <time class="text-sm font-semibold text-[#FF6B6B]">8월 1주 (8/3~8/9)</time>
-                            <h3 class="text-lg font-bold text-[#073B4C] mt-1">포커/쇼다운 홀덤 정기결제 및 쿠폰 이슈 대응</h3>
-                            <div class="space-y-3 text-gray-600 mt-2">
-                                <p><strong>포커/쇼다운 홀덤:</strong> IOS 포커 임시 클래스로 인한 만료 일자 오류 CS 2건 접수, NIMS 아이템 만료 일자가 과거로 표시되어 효력 지급되지 않아 수정 진행</p>
-                                <p><strong>쇼다운 홀덤:</strong> 8/5 스텝 새틀라이트 이용 중 접속 끊김 CS 1건 접수, 카카오톡 쿠폰 미지급 2건, IOS 쿠폰 입력 CS 1건 접수 및 해결</p>
+                </section>
+                
+                <section id="deep-dive" class="mb-16">
+                    <h2 class="section-title">게임별 심층 분석</h2>
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                            <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center"><span class="mr-3 text-3xl">🎴</span>뉴맞고</h3>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-gray-800 mb-2">'부활하기' 기능 관련 불만 VOC 지속</p>
+                                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">"교묘하게 부활하기 누르게해서 왜 애써모은 구슬 쓰게함? 화면도 교묘하게 시간차있게 바뀌게해서 누를 수밖게 없게 만드네… 사기꾼같은것들"</blockquote>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-200">
+                                <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
+                                <p class="text-sm text-gray-600">8월에 이어 관련 VOC가 지속적으로 인입됨. 유저의 반복적인 불편 제기.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                            <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center"><span class="mr-3 text-3xl">🎴</span>섯다</h3>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-gray-800 mb-2">'자유 채널' 베팅 금액 시인성 개선 건의</p>
+                                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">"7800억 있었는데 여유있게 쳐볼라고 자유방 들어갔는데 제 돈이 갑자기 판돈으로 다 깔리면서 돈이 한순간에 털려버렸습니다"</blockquote>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-200">
+                                <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
+                                <p class="text-sm text-gray-600">'자유 채널' 입장 시, 채널의 베팅 금액을 명확히 인지하지 못하고 입장하여 의도치 않은 손실을 보는 유저 불만 발생. 입장 전 베팅 단위를 강조하여 보여주는 UI/UX 개선 방안 고려.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                            <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center"><span class="mr-3 text-3xl">♣️</span>포커</h3>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-gray-800 mb-2">클럽 '강퇴' 시 재가입 페널티 및 보상 정책에 대한 불만</p>
+                                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">"클럽 가입, 탈퇴, 강퇴 관련하여 건의드립니다. 강퇴당하는데 24시간 적용이 말이 됩니까? 기여도 높아지니 단물만 빨아먹고 강퇴당하는데 보상도못받고 또 다른곳 가입하자니 24시간 기다리라는게 말이나됩니까."</blockquote>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-200">
+                                <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
+                                <p class="text-sm text-gray-600">클럽장의 '강퇴' 기능 악용으로, 기여도 높은 유저가 보상 직전 부당하게 제외되고 24시간 재가입 페널티 기준 여부 개선 검토.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                            <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center"><span class="mr-3 text-3xl">♠️</span>쇼다운 홀덤</h3>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-gray-800 mb-2">토너먼트 의도적인 '자리비움' 플레이 경험 저하</p>
+                                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4 space-y-3">
+                                    <p>"파이널 테이블인데 자리비움 저 사람들 2시간동안 자리비우고 있어서 다른 사람들 저 사람들보다 먼저 떨어지기 싫어서 다들 눈치봐가며 제대로 플레이도 안하고..."</p>
+                                    <p>"9명 중에 6명이 자리비움 상태에서 자신의 칩 다 떨어질 때까지 자동 폴드만 하는데 게임의 재미를 급격히 떨어뜨립니다...이런 식에 게임운영은 홀덤이 아닙니다."</p>
+                                </blockquote>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-200">
+                                <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
+                                <p class="text-sm text-gray-600">토너먼트 후반 '자리비움' 기능을 이용해 상금 순위를 올리려는 플레이가 다른 유저들의 경험을 해치는 문제. 일정 시간 이상 자리비움 시 블라인드 페널티 강화 등 공정한 플레이를 유도하기 위한 정책 검토.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                            <h3 class="text-2xl font-bold text-[#073B4C] mb-4 flex items-center"><span class="mr-3 text-3xl">🎰</span>뉴베가스</h3>
+                            <div class="flex-grow">
+                                <p class="font-semibold text-gray-800 mb-2">스와이프 실수로 인한 '맥스 베팅' 실행</p>
+                                <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">"베팅시 스와이프 실수로 의도치않은 맥시멈베팅이 실행되어서 총 2600만 게임머니중 2500만이 한번에 날아갔는데 이런 경우 구제가 가능한지요?"</blockquote>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-200">
+                                <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
+                                <p class="text-sm text-gray-600">베팅 금액 조절 중 스와이프 실수로 '맥스 베팅'이 실행되어 큰 손실을 보는 경험 발생. 유저의 의도치 않은 재화 손실 방지를 위해 맥스 베팅 시 확인 팝업 추가 등 안전장치 도입 고려.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="bg-white p-5 rounded-lg shadow-md">
-                            <time class="text-sm font-semibold text-[#FF6B6B]">8월 2주 (8/10~8/16)</time>
-                            <h3 class="text-lg font-bold text-[#073B4C] mt-1">뉴맞고 행복마트 경품 종료 대응</h3>
-                            <p class="text-gray-600 mt-2"><strong>뉴맞고/섯다/싱글 고스톱:</strong> 8/9 뉴맞고 행복마트 경품 종료에 따른 CS 2건 접수, 내부 사정으로 종료된 점 및 건의 답변 진행</p>
+                </section>
+
+                <section id="voc-summary" class="mb-16">
+                    <h2 class="section-title">주요 건의 VOC 요약</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-600">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 w-[15%]">게임</th>
+                                    <th scope="col" class="px-6 py-3 w-[45%]">주요 VOC 내용</th>
+                                    <th scope="col" class="px-6 py-3 w-[40%]">개선 인사이트</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b align-top">
+                                    <td class="px-6 py-4 font-medium">뉴맞고</td>
+                                    <td class="px-6 py-4">'부활하기' 기능 UI/UX 불만</td>
+                                    <td class="px-6 py-4">유저의 반복적인 불편 제기에 대한 UI/UX 개선 검토.</td>
+                                </tr>
+                                <tr class="bg-gray-50 border-b align-top">
+                                    <td class="px-6 py-4 font-medium">섯다</td>
+                                    <td class="px-6 py-4">'자유 채널' 시스템 리스크</td>
+                                    <td class="px-6 py-4">입장 전 베팅 단위를 강조하여 보여주는 UI/UX 개선 방안 고려.</td>
+                                </tr>
+                                <tr class="bg-white border-b align-top">
+                                    <td class="px-6 py-4 font-medium">포커</td>
+                                    <td class="px-6 py-4">클럽 '강퇴' 관련 정책 불만</td>
+                                    <td class="px-6 py-4">자발적 탈퇴와 강퇴 시 페널티를 차등 적용하고, 개인 기여도에 따른 보상을 보전해주는 등 어뷰징 방지 정책 개선 검토.</td>
+                                </tr>
+                                <tr class="bg-gray-50 border-b align-top">
+                                    <td class="px-6 py-4 font-medium">쇼다운 홀덤</td>
+                                    <td class="px-6 py-4">토너먼트 '자리비움' 악용</td>
+                                    <td class="px-6 py-4">일정 시간 이상 자리비움 시 블라인드 페널티 강화 등 공정한 플레이를 유도하기 위한 정책 검토.</td>
+                                </tr>
+                                <tr class="bg-white border-b align-top">
+                                    <td class="px-6 py-4 font-medium">뉴베가스</td>
+                                    <td class="px-6 py-4">스와이프 실수로 인한 '맥스 베팅' 실행</td>
+                                    <td class="px-6 py-4">유저의 의도치 않은 재화 손실 방지를 위해 맥스 베팅 시 확인 팝업 추가 등 안전장치 도입 고려.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <section id="major-issues" class="mb-16">
+                    <h2 class="section-title">주요 이슈 및 대응 현황</h2>
+                    <p class="text-md text-gray-600 mb-8 text-center">9월 중 발생한 주요 이슈와 이에 대한 대응 현황을 게임별로 정리한 표입니다.</p>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm">
+                                <thead class="bg-gradient-to-r from-[#073B4C] to-[#118AB2] text-white">
+                                    <tr>
+                                        <th class="px-6 py-4 text-left font-bold w-[15%]">게임</th>
+                                        <th class="px-6 py-4 text-left font-bold w-[35%]">주요 이슈</th>
+                                        <th class="px-6 py-4 text-left font-bold w-[35%]">대응 현황</th>
+                                        <th class="px-6 py-4 text-left font-bold w-[15%]">상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="px-6 py-4 font-bold text-[#073B4C] text-center" rowspan="3">
+                                            <div class="flex flex-col items-center">
+                                                <span class="text-2xl mb-1">🎴</span><span>뉴맞고</span><span class="text-xs text-gray-500">(85건)</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">AOS 7 기기 실행 불가</div>
+                                            <div class="text-xs text-gray-600 mt-1">JIRA: GAMECS-1276</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">9/1 수정 배포 완료</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결 완료</span></td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">PC 행복마트 오류</div>
+                                            <div class="text-xs text-gray-600 mt-1">JIRA: GAMECS-1289</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">9/11 PC 114.3 버전 배포로 수정 완료</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결 완료</span></td>
+                                    </tr>
+                                     <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">빗썸 이벤트 보상 미지급</div>
+                                            <div class="text-xs text-gray-600 mt-1">9/1, 대상자 확인 후 수동 지급</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">담당자 확인 후 순차적으로 수동 발송 진행</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">진행중</span></td>
+                                    </tr>
+                                     <tr class="bg-gray-50 border-b border-gray-200 hover:bg-gray-100">
+                                        <td class="px-6 py-4 font-bold text-[#073B4C] text-center">
+                                            <div class="flex flex-col items-center">
+                                                <span class="text-2xl mb-1">🎴</span><span>섯다</span><span class="text-xs text-gray-500">(25건)</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">랭킹/동호회 보상 오류</div>
+                                            <div class="text-xs text-gray-600 mt-1">JIRA: GAMECS-1277, 1274</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">대상자 선별 후 보상 지급 완료</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결 완료</span></td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="px-6 py-4 font-bold text-[#073B4C] text-center">
+                                            <div class="flex flex-col items-center">
+                                                <span class="text-2xl mb-1">♣️</span><span>포커</span><span class="text-xs text-gray-500">(45건)</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">VIP 등급 선정 오류</div>
+                                            <div class="text-xs text-gray-600 mt-1">정기결제 데이터 누락으로 인한 등급 미반영</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">9/24 데이터 보정 작업 및 대상자 보상 지급 완료</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결 완료</span></td>
+                                    </tr>
+                                    <tr class="bg-gray-50 border-b border-gray-200 hover:bg-gray-100">
+                                        <td class="px-6 py-4 font-bold text-[#073B4C] text-center">
+                                            <div class="flex flex-col items-center">
+                                                <span class="text-2xl mb-1">♠️</span><span>쇼다운 홀덤</span><span class="text-xs text-gray-500">(30건)</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">PFGT/JOPT 대회 진행</div>
+                                            <div class="text-xs text-gray-600 mt-1">JIRA: PRODPOKER-29504</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">9/5, 9/12 임시점검 및 이벤트 공지/푸시 발송 완료</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">진행중</span></td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="px-6 py-4 font-bold text-[#073B4C] text-center" rowspan="2">
+                                            <div class="flex flex-col items-center">
+                                                <span class="text-2xl mb-1">🎰</span><span>뉴베가스</span><span class="text-xs text-gray-500">(30건)</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">점검 이후 실행 오류 및 서버 지연</div>
+                                            <div class="text-xs text-gray-600 mt-1">서버 응답 지연으로 인한 간헐적 실행 불가</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">9/23 API 수정 및 재배포를 통해 이슈 해결</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">해결 완료</span></td>
+                                    </tr>
+                                     <tr class="border-b border-gray-200 hover:bg-gray-50">
+                                        <td class="px-6 py-4">
+                                            <div class="font-semibold text-gray-800">슬롯 머니심볼 표시 오류</div>
+                                            <div class="text-xs text-gray-600 mt-1">9/22, Vegas Queen 재접속 시 발생</div>
+                                        </td>
+                                        <td class="px-6 py-4"><div class="text-gray-700">10/13(월) 수정 예정</div></td>
+                                        <td class="px-6 py-4"><span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">진행중</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot" style="background-color: #FF6B6B; box-shadow: 0 0 0 3px #FF6B6B;"></div>
-                        <div class="bg-white p-5 rounded-lg shadow-md">
-                            <time class="text-sm font-semibold text-[#FF6B6B]">8월 3주 (8/17~8/23)</time>
-                            <h3 class="text-lg font-bold text-[#073B4C] mt-1">섯다 레벨 리벨런싱 및 보상 미지급 대응</h3>
-                            <div class="space-y-3 text-gray-600 mt-2">
-                                <p><strong>뉴맞고/섯다/싱글 고스톱:</strong> 8/18 섯다 레벨 리벨런싱 사전 공지 완료, 8/24 시즌 레이스 보상 미지급 CS 59건 접수 및 수정 완료</p>
-                                <p><strong>포커/쇼다운 홀덤:</strong> 포커 VIP 쿠폰 적용 불가 문의, 수동으로 VIP쿠폰 사용 및 추가 머니 지급 완료</p>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-green-800">해결완료</h4>
+                                <span class="text-2xl font-bold text-green-600">5건</span>
+                            </div>
+                            <p class="text-sm text-green-600 mt-2">즉시 대응이 가능했던 이슈들</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-yellow-800">확인중</h4>
+                                <span class="text-2xl font-bold text-yellow-600">0건</span>
+                            </div>
+                            <p class="text-sm text-yellow-600 mt-2">원인 파악 및 분석이 필요한 이슈</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-blue-800">진행중</h4>
+                                <span class="text-2xl font-bold text-blue-600">3건</span>
+                            </div>
+                            <p class="text-sm text-blue-600 mt-2">현재 개선 작업 진행 중</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="mb-16">
+                    <h2 class="section-title">9월 주차별 주요 대응 타임라인</h2>
+                     <div class="relative">
+                        <div class="timeline-line"></div>
+                        <div class="space-y-8">
+                             <div class="timeline-item">
+                                <div class="timeline-dot" style="background-color: #06D6A0; box-shadow: 0 0 0 3px #06D6A0;"></div>
+                                <div class="bg-white p-5 rounded-lg shadow-md">
+                                    <time class="text-sm font-semibold text-[#FF6B6B]">9월 1주 (8/31~9/6)</time>
+                                    <h3 class="text-lg font-bold text-[#073B4C] mt-1">AOS 7 실행 불가 및 보상 오류 대응</h3>
+                                    <ul class="list-disc list-inside space-y-2 text-gray-600 mt-2">
+                                        <li><span class="font-semibold">[공통]</span> AOS 7 기기(뉴맞고, 포커, 뉴베가스) 실행 불가 이슈</li>
+                                        <li><span class="font-semibold">[뉴맞고]</span> 행복마트 클로버 미차감 이슈 (JIRA: GAMECS-1279)</li>
+                                        <li><span class="font-semibold">[섯다]</span> 랭킹 페스타/동호회 보상 오류 (JIRA: GAMECS-1277, 1274)</li>
+                                        <li><span class="font-semibold">[쇼다운 홀덤]</span> 9/5 임시 점검 진행 및 TMT 공지 완료</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="bg-white p-5 rounded-lg shadow-md">
+                                    <time class="text-sm font-semibold text-[#FF6B6B]">9월 2주 (9/7~9/13)</time>
+                                    <h3 class="text-lg font-bold text-[#073B4C] mt-1">웹샵 오픈 준비 및 이벤트/오류 대응</h3>
+                                    <ul class="list-disc list-inside space-y-2 text-gray-600 mt-2">
+                                        <li><span class="font-semibold">[공통]</span> 9/29 피망 웹상점 오픈 준비 착수</li>
+                                        <li><span class="font-semibold">[쇼다운 홀덤]</span> PFGT 대회 진행 (JIRA: PRODPOKER-29504)</li>
+                                        <li><span class="font-semibold">[뉴맞고]</span> PC 행복마트 아이템 교환 오류 수정 완료 (JIRA: GAMECS-1289)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot" style="background-color: #FFD166; box-shadow: 0 0 0 3px #FFD166;"></div>
+                                <div class="bg-white p-5 rounded-lg shadow-md">
+                                    <time class="text-sm font-semibold text-[#FF6B6B]">9월 3주 (9/14~9/20)</time>
+                                    <h3 class="text-lg font-bold text-[#073B4C] mt-1">정기점검 및 서버 이슈 발생</h3>
+                                    <ul class="list-disc list-inside space-y-2 text-gray-600 mt-2">
+                                        <li><span class="font-semibold">[공통]</span> PC 윈도우 7, 8 지원 순차 종료 안내 공지 발송.</li>
+                                        <li><span class="font-semibold">[포커]</span> VIP 등급 선정 오류 발생, 데이터 보정 필요성 인지.</li>
+                                        <li><span class="font-semibold">[뉴베가스]</span> 점검 이후 서버 응답 지연 이슈로 인한 실행 오류 CS 접수 및 원인 파악 착수.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot" style="background-color: #06D6A0; box-shadow: 0 0 0 3px #06D6A0;"></div>
+                                <div class="bg-white p-5 rounded-lg shadow-md">
+                                    <time class="text-sm font-semibold text-[#FF6B6B]">9월 4주 (9/21~9/27)</time>
+                                    <h3 class="text-lg font-bold text-[#073B4C] mt-1">데이터 보정 및 서버 이슈 해결</h3>
+                                    <ul class="list-disc list-inside space-y-2 text-gray-600 mt-2">
+                                        <li><span class="font-semibold">[포커]</span> VIP 데이터 보정 작업 및 대상자 보상 지급</li>
+                                        <li><span class="font-semibold">[뉴베가스]</span> API 수정 및 재배포를 통해 실행 오류 이슈 해결</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="bg-white p-5 rounded-lg shadow-md">
-                            <time class="text-sm font-semibold text-[#FF6B6B]">8월 4주 (8/24~8/30)</time>
-                            <h3 class="text-lg font-bold text-[#073B4C] mt-1">대규모 업데이트 및 주요 이슈 대응</h3>
-                            <div class="space-y-3 text-gray-600 mt-2">
-                                <p><strong>공통:</strong> AOS 7 게임 실행 불가 이슈 - 포커, 뉴맞고, 뉴베가스 모두 AOS 7 설치 기기에서 정상 실행 불가 확인하여 수정 진행 중</p>
-                                <p><strong>뉴맞고:</strong> 패밀리 도와주기 기능 오류 CS 9건 접수 및 수정 완료, 8/27 인게임 충전 이슈 대응을 위해 임시 점검 진행</p>
-                                <p><strong>섯다:</strong> 오류코드 CS001, AWT011 노출되어 접속 불가 CS 16건 접수 및 수정 완료, CS 유저 대상자 장애 보상 지급 완료</p>
-                                <p><strong>뉴베가스:</strong> Unity6 업데이트로 윈도우 7, 8 이용자 이용 불가 CS 접수, 윈도우 10, 11 업데이트 요청 공지 및 원격지원 안내</p>
-                            </div>
+                </section>
+                
+                <section id="voc-links" class="mb-16">
+                    <h2 class="section-title">VOC 취합 링크</h2>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-gray-600">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">게임</th>
+                                        <th scope="col" class="px-6 py-3">이슈 내용</th>
+                                        <th scope="col" class="px-6 py-3">링크</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b">
+                                        <td class="px-6 py-4 font-medium">뉴베가스</td>
+                                        <td class="px-6 py-4">점검 이후 실행 오류 및 서버 지연</td>
+                                        <td class="px-6 py-4">
+                                            <a href="https://docs.google.com/spreadsheets/d/1WDuFnRFbvu_1Nlmj2KbzHixKe4TZsQ8Z5lJAybsjsng/edit?gid=1571935259#gid=1571935259" 
+                                               target="_blank" class="text-blue-600 hover:text-blue-800 underline">상세 보기</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                </section>
 
-        <!-- VOC 취합 링크 -->
-        <section id="voc-links" class="mb-16">
-            <h2 class="section-title">VOC 취합 링크</h2>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-600">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">게임</th>
-                                <th scope="col" class="px-6 py-3">이슈 내용</th>
-                                <th scope="col" class="px-6 py-3">링크</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b">
-                                <td class="px-6 py-4 font-medium">뉴맞고</td>
-                                <td class="px-6 py-4">패밀리 콘텐츠 관련 VOC</td>
-                                <td class="px-6 py-4">
-                                    <a href="https://docs.google.com/spreadsheets/d/1pIJwzRTKNRrLdMdLD6ebtqQQhreEzx8VB8VkEbJX9Hw/edit?gid=2008258606#gid=2008258606" 
-                                       target="_blank" class="text-blue-600 hover:text-blue-800 underline">상세 보기</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-50 border-b">
-                                <td class="px-6 py-4 font-medium">뉴맞고</td>
-                                <td class="px-6 py-4">인게임 충전 관련 VOC</td>
-                                <td class="px-6 py-4">
-                                    <a href="https://docs.google.com/spreadsheets/d/1pIJwzRTKNRrLdMdLD6ebtqQQhreEzx8VB8VkEbJX9Hw/edit?gid=37563975#gid=37563975" 
-                                       target="_blank" class="text-blue-600 hover:text-blue-800 underline">상세 보기</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b">
-                                <td class="px-6 py-4 font-medium">섯다</td>
-                                <td class="px-6 py-4">접속 불가 오류 (CS001, AWT011)</td>
-                                <td class="px-6 py-4">
-                                    <a href="https://docs.google.com/spreadsheets/d/1kNHrZ6htmoXjaXxQ2acASb_iU863KIrLDHzKnatV0XE/edit?gid=1728631054#gid=1728631054" 
-                                       target="_blank" class="text-blue-600 hover:text-blue-800 underline">상세 보기</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-50 border-b">
-                                <td class="px-6 py-4 font-medium">쇼다운홀덤</td>
-                                <td class="px-6 py-4">업데이트 후 렉 및 발열 현상</td>
-                                <td class="px-6 py-4">
-                                    <a href="https://docs.google.com/spreadsheets/d/1kNHrZ6htmoXjaXxQ2acASb_iU863KIrLDHzKnatV0XE/edit?gid=691713688#gid=691713688" 
-                                       target="_blank" class="text-blue-600 hover:text-blue-800 underline">상세 보기</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b">
-                                <td class="px-6 py-4 font-medium">뉴베가스</td>
-                                <td class="px-6 py-4">PC 실행 오류</td>
-                                <td class="px-6 py-4">
-                                    <a href="https://docs.google.com/spreadsheets/d/1kNHrZ6htmoXjaXxQ2acASb_iU863KIrLDHzKnatV0XE/edit?gid=163176523#gid=163176523" 
-                                       target="_blank" class="text-blue-600 hover:text-blue-800 underline">상세 보기</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- 푸터 -->
-        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
-            <p class="text-gray-600">본 리포트는 2025년 8월 1일부터 8월 31일까지 접수된 고객 문의를 바탕으로 작성되었습니다.</p>
-            <p class="text-sm text-gray-500 mt-2">Pmang AION Customer Support Team</p>
-        </footer>
+                <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+                    <p class="text-gray-600">본 리포트는 2025년 9월 1일부터 9월 30일까지 접수된 고객 문의를 바탕으로 작성되었습니다.</p>
+                    <p class="text-sm text-gray-500 mt-2">Pmang VOC Analysis Team</p>
+                </footer>
             </div>
         </div>
     </div>
 
     <script>
+        // 차트 플러그인 등록
+        Chart.register(ChartDataLabels);
+
         // 차트 색상 정의
         const chartColors = {
             blue: '#118AB2',
             yellow: '#FFD166',
             green: '#06D6A0',
             red: '#FF6B6B',
-            darkBlue: '#073B4C',
             purple: '#7209B7'
         };
 
-        // 게임별 VOC 데이터
+        // 게임별 VOC 데이터 (9월)
         const vocByGameData = {
-            labels: ['뉴맞고', '섯다', '포커', '뉴베가스', '쇼다운 홀덤'],
+            labels: ['뉴맞고', '포커', '쇼다운 홀덤', '뉴베가스', '섯다'],
             datasets: [{
                 label: 'VOC 접수 건수',
-                data: [89, 32, 28, 25, 15],
+                data: [85, 45, 30, 30, 25],
                 backgroundColor: [
                     chartColors.blue,
-                    chartColors.green,
                     chartColors.yellow,
+                    chartColors.purple,
                     chartColors.red,
-                    chartColors.darkBlue,
+                    chartColors.green,
                 ],
                 borderColor: '#FFFFFF',
                 borderWidth: 2,
@@ -695,7 +529,7 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { 
-                            position: 'top', 
+                            position: 'right', 
                             labels: { 
                                 font: { 
                                     size: 14, 
@@ -704,14 +538,22 @@
                             } 
                         },
                         tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    const label = context.label || '';
-                                    const value = context.parsed;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = ((value / total) * 100).toFixed(1);
-                                    return `${label}: ${value}건 (${percentage}%)`;
-                                }
+                           enabled: false
+                        },
+                        datalabels: {
+                            formatter: (value, ctx) => {
+                                let sum = 0;
+                                const dataArr = ctx.chart.data.datasets[0].data;
+                                dataArr.map(data => {
+                                    sum += data;
+                                });
+                                const percentage = (value * 100 / sum).toFixed(1) + '%';
+                                return percentage;
+                            },
+                            color: '#fff',
+                            font: {
+                                weight: 'bold',
+                                size: 14,
                             }
                         }
                     }
@@ -720,5 +562,4 @@
         };
     </script>
 </body>
-
-</html> 
+</html>

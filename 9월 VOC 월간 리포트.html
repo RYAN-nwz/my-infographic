@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9월 VOC 월간 리포트.html</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #073B4C;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #118AB2;
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border-left: 5px solid #FFD166;
+        }
+        .kpi-value {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #118AB2;
+        }
+        .kpi-label {
+            font-size: 1.125rem;
+            color: #073B4C;
+            font-weight: 500;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            height: 1.25rem;
+            width: 1.25rem;
+            border-radius: 9999px;
+            border-width: 3px;
+            border-color: #FFFFFF;
+            background-color: #118AB2;
+            box-shadow: 0 0 0 3px #118AB2;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 0.5rem;
+            top: 0.25rem;
+            bottom: -0.25rem;
+            width: 2px;
+            background-color: #A3B3C2;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex">
+        <div class="w-64 bg-gray-100 min-h-screen p-6 border-r border-gray-200 fixed top-0 left-0 h-full">
+            <h2 class="text-xl font-bold text-[#073B4C] mb-6">월차별 리포트</h2>
+            <nav class="space-y-3">
+                <a href="./7월 VOC 월간 리포트.html" 
+                   class="block p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
+                    <div class="font-medium">7월 VOC</div>
+                    <div class="text-sm text-gray-500">2025년 7월</div>
+                </a>
+                <a href="./8월 VOC 월간 리포트.html" 
+                   class="block p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
+                    <div class="font-medium">8월 VOC</div>
+                    <div class="text-sm text-gray-500">2025년 8월</div>
+                </a>
+                <a href="./9월 VOC 월간 리포트.html" 
+                   class="block p-3 rounded-lg bg-[#118AB2] text-white shadow-lg">
+                    <div class="font-medium">9월 VOC</div>
+                    <div class="text-sm text-gray-200">2025년 9월</div>
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex-1 ml-64">
+            <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+                <header class="text-center mb-12">
+                    <h1 class="text-4xl md:text-5xl font-black text-[#073B4C] mb-2">2025년 9월 VOC 리포트</h1>
+                    <p class="text-lg text-[#118AB2]">고객의 목소리를 통해 더 나은 게임 환경을 만들어갑니다.</p>
+                    <p class="text-sm text-gray-600 mt-2">2025년 9월 1일 ~ 9월 30일</p>
+                </header>
+                
+                <section class="mb-16">
+                    <h2 class="section-title">9월 VOC 현황 요약</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="kpi-card">
+                            <div class="kpi-value">215<span class="text-2xl">건</span></div>
+                            <div class="kpi-label">9월 총 VOC(건의) 접수</div>
+                            <div class="text-sm text-red-600 mt-2">8월 대비 +13.8%</div>
+                        </div>
+                        <div class="kpi-card col-span-1 md:col-span-2"
