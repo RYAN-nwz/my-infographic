@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9월 VOC 월간 리포트 인포그래픽</title>
+    <title>9월 VOC 월간 리포트.html</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 차트 라벨 플러그인 추가 -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,42 +89,29 @@
 </head>
 <body>
     <div class="flex">
-        <div class="w-64 bg-gray-100 min-h-screen p-6 border-r border-gray-200 fixed top-0 left-0 h-full">
-            <h2 class="text-xl font-bold text-[#073B4C] mb-6">월차별 리포트</h2>
-            <nav class="space-y-3">
-                <a href="./7월 VOC 월간 리포트.html" 
-                   class="block p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
-                    <div class="font-medium">7월 VOC</div>
-                    <div class="text-sm text-gray-500">2025년 7월</div>
-                </a>
-                <a href="./8월 VOC 월간 리포트.html" 
-                   class="block p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors">
-                    <div class="font-medium">8월 VOC</div>
-                    <div class="text-sm text-gray-500">2025년 8월</div>
-                </a>
-                <a href="./9월 VOC 월간 리포트.html" 
-                   class="block p-3 rounded-lg bg-[#118AB2] text-white shadow-lg">
-                    <div class="font-medium">9월 VOC</div>
-                    <div class="text-sm text-gray-200">2025년 9월</div>
-                </a>
-            </nav>
+        <!-- 왼쪽 사이드바 (자동 생성될 영역) -->
+        <div id="sidebar-container" class="w-64 bg-gray-100 min-h-screen p-6 border-r border-gray-200 fixed top-0 left-0 h-full">
+            <!-- 이 내용은 nav.js 파일에 의해 자동으로 채워집니다. -->
         </div>
 
+        <!-- 메인 컨텐츠 -->
         <div class="flex-1 ml-64">
             <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+                <!-- 헤더 -->
                 <header class="text-center mb-12">
                     <h1 class="text-4xl md:text-5xl font-black text-[#073B4C] mb-2">2025년 9월 VOC 리포트</h1>
                     <p class="text-lg text-[#118AB2]">고객의 목소리를 통해 더 나은 게임 환경을 만들어갑니다.</p>
                     <p class="text-sm text-gray-600 mt-2">2025년 9월 1일 ~ 9월 30일</p>
                 </header>
                 
+                <!-- 요약 KPI -->
                 <section class="mb-16">
                     <h2 class="section-title">9월 VOC 현황 요약</h2>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="kpi-card">
                             <div class="kpi-value">215<span class="text-2xl">건</span></div>
                             <div class="kpi-label">9월 총 VOC(건의) 접수</div>
-                            <div class="text-sm text-red-600 mt-2">8월 대비 +13.8%</div>
+                            <div class="text-sm text-green-600 mt-2">8월 대비 +13.8%</div>
                         </div>
                         <div class="kpi-card col-span-1 md:col-span-2" style="border-color: #FF6B6B;">
                            <h3 class="text-xl font-bold text-[#073B4C] mb-3">Top 3 주요 문의 카테고리</h3>
@@ -145,6 +133,7 @@
                     </div>
                 </section>
 
+                <!-- 게임별 VOC 분포 -->
                 <section class="mb-16">
                     <h2 class="section-title">게임별 VOC(건의) 분포</h2>
                     <p class="text-md text-gray-600 mb-6 text-center">9월 한 달간 접수된 건의성 VOC를 게임별로 분석한 결과, 뉴맞고에서 가장 많은 건의가 발생했으며 게임 조작 관련 불만이 주요 이슈였습니다.</p>
@@ -155,6 +144,7 @@
                     </div>
                 </section>
                 
+                <!-- 게임별 심층 분석 -->
                 <section id="deep-dive" class="mb-16">
                     <h2 class="section-title">게임별 심층 분석</h2>
                     <div class="space-y-8">
@@ -219,6 +209,7 @@
                     </div>
                 </section>
 
+                <!-- 주요 건의 VOC 요약 -->
                 <section id="voc-summary" class="mb-16">
                     <h2 class="section-title">주요 건의 VOC 요약</h2>
                     <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
@@ -261,6 +252,7 @@
                     </div>
                 </section>
                 
+                <!-- 주요 이슈 및 대응 현황 (표 형식) -->
                 <section id="major-issues" class="mb-16">
                     <h2 class="section-title">주요 이슈 및 대응 현황</h2>
                     <p class="text-md text-gray-600 mb-8 text-center">9월 중 발생한 주요 이슈와 이에 대한 대응 현황을 게임별로 정리한 표입니다.</p>
@@ -369,6 +361,7 @@
                             </table>
                         </div>
                     </div>
+                    <!-- 상태별 요약 -->
                     <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="bg-green-50 p-4 rounded-lg border border-green-200">
                             <div class="flex items-center justify-between">
@@ -394,6 +387,7 @@
                     </div>
                 </section>
                 
+                <!-- 9월 주차별 주요 대응 타임라인 -->
                 <section class="mb-16">
                     <h2 class="section-title">9월 주차별 주요 대응 타임라인</h2>
                      <div class="relative">
@@ -451,6 +445,7 @@
                     </div>
                 </section>
                 
+                <!-- VOC 취합 링크 -->
                 <section id="voc-links" class="mb-16">
                     <h2 class="section-title">VOC 취합 링크</h2>
                     <div class="bg-white p-6 rounded-lg shadow-md">
@@ -472,12 +467,14 @@
                                                target="_blank" class="text-blue-600 hover:text-blue-800 underline">상세 보기</a>
                                         </td>
                                     </tr>
-                                    </tbody>
+                                    <!-- 다른 링크들도 필요 시 여기에 추가 -->
+                                </tbody>
                             </table>
                         </div>
                     </div>
                 </section>
 
+                <!-- 푸터 -->
                 <footer class="text-center mt-12 pt-8 border-t border-gray-300">
                     <p class="text-gray-600">본 리포트는 2025년 9월 1일부터 9월 30일까지 접수된 고객 문의를 바탕으로 작성되었습니다.</p>
                     <p class="text-sm text-gray-500 mt-2">Pmang VOC Analysis Team</p>
@@ -486,6 +483,7 @@
         </div>
     </div>
 
+    <script src="nav.js"></script>
     <script>
         // 차트 플러그인 등록
         Chart.register(ChartDataLabels);
@@ -563,3 +561,4 @@
     </script>
 </body>
 </html>
+
