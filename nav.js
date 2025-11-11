@@ -1,43 +1,82 @@
-function generateNavbar() {
-    const reports = [
-        { month: 7, title: "7월 VOC", url: "./7월 VOC 월간 리포트.html" },
-        { month: 8, title: "8월 VOC", url: "./8월 VOC 월간 리포트.html" },
-        { month: 9, title: "9월 VOC", url: "./9월 VOC 월간 리포트.html" },
-        // 나중에 10월 리포트를 추가할 때, 이 아래에 한 줄만 추가하면 됩니다.
-        // { month: 10, title: "10월 VOC", url: "./10월 VOC 월간 리포트.html" },
-    ];
+// 10월 업데이트된 nav.js
 
-    // 현재 페이지 URL을 기반으로 몇 월 리포트인지 파악
-    const currentPage = window.location.pathname.split('/').pop();
-    let currentMonth = 0;
-    if (currentPage.includes('index.html') || currentPage.includes('9월')) {
-        currentMonth = 9;
-    } else if (currentPage.includes('8월')) {
-        currentMonth = 8;
-    } else if (currentPage.includes('7월')) {
-        currentMonth = 7;
-    }
-    
-    let navHTML = '<h2 class="text-xl font-bold text-[#073B4C] mb-6">월차별 리포트</h2>';
-    navHTML += '<nav class="space-y-3">';
+// 현재 페이지 파일명을 기반으로 활성화할 메뉴 ID를 결정합니다.
+const path = window.location.pathname.split("/").pop();
+let activeId = "index.html"; // 기본값 (최신 리포트)
 
-    reports.forEach(report => {
-        const isActive = report.month === currentMonth;
-        const activeClass = "block p-3 rounded-lg bg-[#118AB2] text-white shadow-lg";
-        const inactiveClass = "block p-3 rounded-lg text-gray-700 hover:bg-gray-200 transition-colors";
-
-        navHTML += `
-            <a href="${report.url}" class="${isActive ? activeClass : inactiveClass}">
-                <div class="font-medium">${report.title}</div>
-                <div class="text-sm ${isActive ? 'text-gray-200' : 'text-gray-500'}">2025년 ${report.month}월</div>
-            </a>
-        `;
-    });
-
-    navHTML += '</nav>';
-
-    document.getElementById('sidebar-container').innerHTML = navHTML;
+if (path.includes("9월")) {
+    activeId = "9월";
+} else if (path.includes("8월")) {
+    activeId = "8월";
+} else if (path.includes("7월")) {
+    activeId = "7월";
+} else if (path === "10월 VOC 월간 리포트.html") {
+    activeId = "10월";
 }
 
-// 페이지가 로드되면 함수 실행
-document.addEventListener('DOMContentLoaded', generateNavbar);
+// 메뉴 아이템 목록 (10월 항목 추가)
+const menuItems = [
+    { name: "10월 리포트 (최신)", href: "index.html", id: "index.html" },
+    { name: "10월 리포트 (원본)", href: "10월 VOC 월간 리포트.html", id: "10월" },
+    { name: "9월 리포트", href: "9월 VOC 월간 리포트.html", id: "9월" },
+    { name: "8월 리포트", href: "8월 VOC 월간 리포트.html", id: "8월" },
+    { name: "7월 리포트", href: "7월 VOC 월간 리포트.html", id: "7월" },
+];
+
+// 사이드바 렌더링 함수
+function renderSidebar() {
+    const container = document.getElementById("sidebar-container");
+    if (!container) return;
+
+    let menuHtml = `
+        <h2 class="text-xl font-bold text-[#073B4C] mb-6 border-b-2 border-[#118AB2] pb-2">월간 리포트</h2>
+        <nav>
+            <ul>
+    `;
+
+    menuItems.forEach(item => {
+        let isCurrent = (item.id === activeId);
+
+        // 'index.html' (최신)과 '10월' (원본)은 동일한 리포트이므로,
+        // 둘 중 하나가 활성화되면 다른 하나도 함께 활성화 상태로 표시합니다.
+        if ((activeId === "index.html" || activeId === "10월") && (item.id === "index.html" || item.id === "10월")) {
+            isCurrent = true;
+        }
+
+        if (isCurrent) {
+            menuHtml += `
+                <li class="mb-2">
+                    <a href="${item.href}" class="block py-3 px-4 rounded-lg bg-[#118AB2] text-white font-bold text-lg shadow-md">
+                        ${item.name}
+                    </a>
+                </li>
+            `;
+        } else {
+            menuHtml += `
+                <li class="mt-2">
+                    <a href="${item.href}" class="block py-2 px-4 rounded-lg text-gray-700 hover:bg-gray-200 hover:text-[#073B4C] font-medium">
+                        ${item.name}
+                    </a>
+                </li>
+            `;
+        }
+    });
+
+    menuHtml += `
+            </ul>
+        </nav>
+        <div class="mt-8 pt-6 border-t border-gray-300">
+            <h3 class="text-lg font-semibold text-[#073B4C] mb-3">리포트 섹션</h3>
+            <ul class="text-sm">
+                <li><a href="#deep-dive" class="text-gray-600 hover:text-black hover:underline py-1 block">심층 분석</a></li>
+                <li><a href="#voc-summary" class="text-gray-600 hover:text-black hover:underline py-1 block">주요 건의 요약</a></li>
+                <li><a href="#major-issues" class="text-gray-600 hover:text-black hover:underline py-1 block">이슈 및 대응 현황</a></li>
+            </ul>
+        </div>
+    `;
+    
+    container.innerHTML = menuHtml;
+}
+
+// 페이지 로드 시 사이드바 렌더링
+document.addEventListener("DOMContentLoaded", renderSidebar);
