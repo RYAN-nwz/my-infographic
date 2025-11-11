@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10월 VOC 월간 리포트.html</title>
+    <title>10월 VOC 월간 리포트.html</title> 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
@@ -105,7 +105,7 @@
                         <div class="kpi-card">
                             <div class="kpi-value">365<span class="text-2xl">건</span></div>
                             <div class="kpi-label">10월 총 VOC(건의) 접수</div>
-                            <div class="text-sm text-green-600 mt-2 font-semibold">9월 대비 +69.8% </div>
+                            <div class="text-sm text-green-600 mt-2 font-semibold">9월 대비 69.8%+</div>
                         </div>
                         <div class="kpi-card col-span-1 md:col-span-2" style="border-color: #FF6B6B;">
                            <h3 class="text-xl font-bold text-[#073B4C] mb-3">Top 3 주요 문의 카테고리</h3>
@@ -221,7 +221,7 @@
                             </div>
                             <div class="mt-auto pt-4 border-t border-gray-200">
                                 <p class="text-sm font-semibold text-[#06D6A0]">개선 인사이트</p>
-                                <p class="text-sm text-gray-600">게임 밸런스(자유채널 판돈) 조정 및 '클로버' 아이템의 사용처 확대 검토.</p>
+                                <p class="text-sm text-gray-600">게임 밸런스(자유채널 판돈) 조정 및 '클로버' 아이템의 사용처 확대(예: 머니 교환) 검토.</p>
                             </div>
                         </div>
 
@@ -241,16 +241,6 @@
                             </thead>
                             <tbody>
                                 <tr class="bg-white border-b align-top">
-                                    <td class="px-6 py-4 font-medium text-red-600">쇼다운 홀덤</td>
-                                    <td class="px-6 py-4"><b>(장애)</b> 10/28~29 긴급 점검으로 토너먼트가 강제 종료됨. 참가비만 환불 조치되어 리바인 비용, 시간, 예상 상금(ICM)에 대한 추가 보상 요구 폭주.</td>
-                                    <td class="px-6 py-4">(JIRA 참고) 10/28 17:21 긴급점검(29분)으로 UG 재배포. 중단된 토너는 참가비 환불 조치. (추가 보상 요구 CS 지속 인입)</td>
-                                </tr>
-                                <tr class="bg-gray-50 border-b align-top">
-                                    <td class="px-6 py-4 font-medium text-red-600">포커 / 뉴베가스</td>
-                                    <td class="px-6 py-4"><b>(장애)</b> 10/28 점검 이후 PC에서 "게임 스타터 오류" 및 "100 Auth failed" 메시지가 발생하며 게임 실행 불가.</td>
-                                    <td class="px-6 py-4">(JIRA 참고) Unity6 버그 및 서버 통신 이슈. 10/28 라이브 배포로 대응 완료.</td>
-                                </tr>
-                                <tr class="bg-white border-b align-top">
                                     <td class="px-6 py-4 font-medium">쇼다운 홀덤</td>
                                     <td class="px-6 py-4"><b>(건의)</b> '플레이어 메모' 100명 제한 해제 및 신규 모드 '오마하' 추가 요청.</td>
                                     <td class="px-6 py-4">QoL(메모) 및 신규 콘텐츠(오마하) 관련 건의사항으로, 개발팀 검토 요청.</td>
@@ -269,6 +259,16 @@
                                     <td class="px-6 py-4 font-medium">섯다</td>
                                     <td class="px-6 py-4"><b>(건의)</b> '클로버' 아이템 사용처 확대 및 2장/3장 섯다 '자유채널' 판돈 밸런스 조정 요청.</td>
                                     <td class="px-6 py-4">아이템 활용도(클로버) 및 게임 밸런스(자유채널 판돈) 개발팀 검토.</td>
+                                </tr>
+                                <tr class="bg-white border-b align-top">
+                                    <td class="px-6 py-4 font-medium">포커</td>
+                                    <td class="px-6 py-4"><b>(건의)</b> '게임방 입장' UI/UX 개선 (방 목록) 요청.</td>
+                                    <td class="px-6 py-4">'방 입장' UI는 유저 편의성과 직결되므로, 관련 기획/개발팀의 검토 요청.</td>
+                                </tr>
+                                <tr class="bg-gray-50 border-b align-top">
+                                    <td class="px-6 py-4 font-medium">포커</td>
+                                    <td class="px-6 py-4"><b>(건의)</b> '자동 보험금 공제' On/Off 기능 문의.</td>
+                                    <td class="px-6 py-4">유저 선택권 확대를 위해 '보험금' 시스템 On/Off 기능 도입 검토.</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -486,7 +486,7 @@
                                     </tr>
                                      <tr class="bg-gray-50 border-b">
                                         <td class="px-6 py-4 font-medium">쇼다운 홀덤</td>
-                                        <td class="px-6 py-4">PFGT 11월 버블 보상 지급</td>
+                                        <td class="px-6 py-4">장애 보상 및 티켓 교환</td>
                                         <td class="px-6 py-4">
                                             <a href="https://jira.neowiz.com/browse/BIZGM-11578"
                                                target="_blank" class="text-blue-600 hover:text-blue-800 underline">BIZGM-11578</a>
